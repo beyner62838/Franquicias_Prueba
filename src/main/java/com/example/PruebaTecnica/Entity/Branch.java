@@ -1,20 +1,21 @@
-package com.example.Prueba_Tecnica.Entity;
+package com.example.PruebaTecnica.Entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "franchises")
+@Table(name = "branches")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Franchise {
+public class Branch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +25,17 @@ public class Franchise {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "franchise_id")
+    private Franchise franchise;
+
+    @JsonBackReference
     @OneToMany(
-            mappedBy = "franchise",
+            mappedBy = "branches",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY
     )
-    private List<Branch> branches = new ArrayList<>();
+    private List<Product> product = new ArrayList<>();
+
 }

@@ -1,11 +1,8 @@
-package com.example.Prueba_Tecnica.Entity;
+package com.example.PruebaTecnica.Entity;
 
 import lombok.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "products")
@@ -28,7 +25,7 @@ public class Product {
     private Integer stock;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Branch_id" , nullable = false)
+    @JoinColumn(name = "Branches_id" , nullable = false)
     private Branch branch;
 
 }
