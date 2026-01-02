@@ -1,5 +1,6 @@
 package com.example.PruebaTecnica.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -16,16 +17,16 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "name product is required")
-    @Column(nullable = false, unique = true)
+    @NotBlank(message = "product name is required")
+    @Column(nullable = false)
     private String name;
 
-    @Min(value =0 , message = "stock cannot be negative")
+    @Min(value = 0, message = "stock cannot be negative")
     @Column(nullable = false)
     private Integer stock;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Branches_id" , nullable = false)
+    @JoinColumn(name = "branch_id", nullable = false)
     private Branch branch;
-
 }

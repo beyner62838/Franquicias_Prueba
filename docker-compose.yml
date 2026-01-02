@@ -6,7 +6,7 @@ services:
     image: postgres:15
     container_name: postgres_db
     environment:
-      POSTGRES_DB: bank_db
+      POSTGRES_DB: franchise_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
@@ -26,7 +26,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bank_db
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/franchise_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
       SERVER_PORT: 8080
