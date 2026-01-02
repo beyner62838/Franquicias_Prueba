@@ -163,36 +163,36 @@ Ejemplo de respuesta:
 
   Nota: Si una sucursal no tiene productos, no aparecerá en el resultado.
 
-Endpoints extra (bonus)
-Actualizar nombre de franquicia
+### Endpoints extra (bonus)
+1) Actualizar nombre de franquicia
 
-    PUT /api/franchises/{franchiseId}/name
+       PUT /api/franchises/{franchiseId}/name
 
-Body:
+  Body:
+  
+  {
+    "name": "Franquicia Pepe PRO"
+  }
 
-{
-  "name": "Franquicia Pepe PRO"
-}
+2) Actualizar nombre de sucursal
 
-Actualizar nombre de sucursal
+        PUT /api/branches/{branchId}/name
 
-PUT /api/branches/{branchId}/name
+  Body:
+  
+  {
+    "name": "Sucursal Centro Renovada"
+  }
 
-Body:
+3) Actualizar nombre de producto
 
-{
-  "name": "Sucursal Centro Renovada"
-}
+        PUT /api/products/{productId}/name
 
-Actualizar nombre de producto
-
-PUT /api/products/{productId}/name
-
-Body:
-
-{
-  "name": "Coca Cola Zero"
-}
+  Body:
+  
+  {
+    "name": "Coca Cola Zero"
+  }
 
 Flujo recomendado para pruebas (Postman)
 
