@@ -1,15 +1,15 @@
 package com.example.PruebaTecnica.Dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class TopProductResponse {
+    private Long branchId;
     private String branchName;
-    private String name;
+    private Long productId;
+    private String productName;
     private Integer stock;
-
-
-
 }

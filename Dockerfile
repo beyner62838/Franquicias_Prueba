@@ -5,7 +5,7 @@ FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
 # Copiamos el JAR generado
-COPY target/*.jar app.jar
+COPY target/franchise-api-1.0.0.jar app.jar
 # Puerto del backend
 EXPOSE 8080
 
