@@ -16,18 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Franchise endpoints.
- *
- * Responsibilities:
- * - Create a franchise.
- * - Add branches to an existing franchise.
- * - Return "top stock products" per branch for a given franchise (required by the statement).
- *
- * Notes:
- * - Business rules live in services; controllers only orchestrate HTTP.
- * - DTOs are used as request/response models to avoid exposing entities directly.
- */
 @RestController
 @RequestMapping("/api/franchises")
 @RequiredArgsConstructor
@@ -58,18 +46,12 @@ public class FranchiseController {
         return ResponseEntity.ok(franchiseService.updateName(franchiseId, request.getName()));
     }
 
-    /**
-     * Requirement #7: For a given franchise, return the product with the highest stock for each branch.
-     *
-     * GET /api/franchises/{franchiseId}/top-products
-     *
-     * Response: list of products with branch info (branchId/branchName) included.
-     */
+  
     @GetMapping("/{franchiseId}/top-products")
     public ResponseEntity<List<TopProductResponse>> topProductsByBranch(@PathVariable Long franchiseId) {
         Franchise franchise = franchiseService.getById(franchiseId);
 
-        // For each branch, fetch its top-stock product, then map it to a response DTO.
+        
         List<TopProductResponse> result = franchise.getBranches().stream()
                 .map(branch -> productService.getTopStockByBranch(branch.getId()))
                 .filter(p -> p != null) // skip branches with no products
